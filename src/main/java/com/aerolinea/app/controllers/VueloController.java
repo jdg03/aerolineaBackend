@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Vuelo;
-import com.aerolinea.app.services.impl.AeropuertoServiceImpl;
-import com.aerolinea.app.services.impl.AvionServiceImpl;
 import com.aerolinea.app.services.impl.VueloServiceImpl;
 
 @RestController
@@ -20,7 +18,6 @@ public class VueloController {
 
     @Autowired
     private VueloServiceImpl vueloServiceImpl;
-   
 
     @GetMapping("")
     public List<Vuelo> vuelos() {
@@ -29,7 +26,7 @@ public class VueloController {
 
     @PostMapping("/crear")
     public Vuelo crearVuelo(@RequestBody Vuelo vuelo) {
-        return this.vueloServiceImpl.crearVuelo(vuelo);
+        return null;
     }
 
 }

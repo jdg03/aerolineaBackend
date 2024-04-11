@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Avion;
+import com.aerolinea.app.entities.dto.AvionDTO;
 import com.aerolinea.app.services.impl.AvionServiceImpl;
 
 @RestController
@@ -25,7 +26,12 @@ public class AvionController {
     }
 
     @PostMapping("/crear")
-    public Avion crearAvion(@RequestBody Avion avion) {
+    public Avion crearAvion(@RequestBody AvionDTO avionDTO) {
+        Avion avion = new Avion();
+        avion.setMarca(avionDTO.getMarca());
+        avion.setAsientosBasico(avionDTO.getAsientosBasico());
+        avion.setAsientosPremium(avionDTO.getAsientosPremium());
+        avion.setAsientosPrimeraClase(avionDTO.getAsientosPrimeraClase());
         return this.avionServiceImpl.crearAvion(avion);
     }
 }
