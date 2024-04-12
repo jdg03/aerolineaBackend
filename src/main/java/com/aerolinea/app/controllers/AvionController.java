@@ -3,6 +3,7 @@ package com.aerolinea.app.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import com.aerolinea.app.entities.Avion;
 import com.aerolinea.app.entities.dto.AvionDTO;
 import com.aerolinea.app.services.impl.AvionServiceImpl;
 
+@CrossOrigin(origins = "http://localhost:5173/")
 @RestController
 @RequestMapping("/api/aviones")
 public class AvionController {
