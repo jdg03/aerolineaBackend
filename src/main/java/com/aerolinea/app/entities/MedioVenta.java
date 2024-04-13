@@ -9,17 +9,13 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
+@Table(name = "medio_venta")
 @Data
-@Table(name = "aviones")
-public class Avion {
+public class MedioVenta {
 
     @Id
-    @Column(name = "id_avion")
+    @Column(name = "id_medio_venta")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAvion;
-    private String nombre;
-    private String modelo;
-    private int capacidad;
-    private String marca;
+    private int idMedioVenta;
 
 }

@@ -1,8 +1,5 @@
 package com.aerolinea.app.entities;
 
-import java.time.LocalDate;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,24 +11,23 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
+@Table(name = "asientos")
 @Data
-@Table(name = "vuelos")
-public class Vuelo {
+public class Asiento {
 
     @Id
-    @Column(name = "id_vuelo")
+    @Column(name = "id_asiento")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idVuelo;
-    private LocalDate fechaSalida;
-    private LocalDate fechaLlegada;
-    private String estado;
+    private int idAsiento;
+    @Column(name = "numero_asiento")
+    private int numeroAsiento;
+    private boolean estado;
 
     @OneToOne
     @JoinColumn(name = "id_avion", referencedColumnName = "id_avion")
     private Avion avion;
-
     @OneToOne
-    @JoinColumn(name = "id_destino", referencedColumnName = "id_destino")
-    private Destino destino;
+    @JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
+    private Clase clase;
 
 }

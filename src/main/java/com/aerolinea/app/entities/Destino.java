@@ -1,6 +1,5 @@
 package com.aerolinea.app.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,17 +11,21 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
+@Table(name = "destinos")
 @Data
-@Table(name = "aeropuertos")
-public class Aeropuerto {
+public class Destino {
 
     @Id
-    @Column(name = "id_aeropuerto")
+    @Column(name = "id_destino")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAeropuerto;
-    private String nombre;
+    private int idDestino;
+    private int distancia;
+
     @OneToOne
-    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
-    private Ciudad ciudad;
+    @JoinColumn(name = "id_ciudad_destino", referencedColumnName = "id_ciudad")
+    private Ciudad ciudadDestino;
+    @OneToOne
+    @JoinColumn(name = "id_ciudad_origen", referencedColumnName = "id_ciudad")
+    private Ciudad ciudadOrigen;
 
 }

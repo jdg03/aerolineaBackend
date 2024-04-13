@@ -29,11 +29,12 @@ public class AvionController {
 
     @PostMapping("/crear")
     public Avion crearAvion(@RequestBody AvionDTO avionDTO) {
-        Avion avion = new Avion();
-        avion.setMarca(avionDTO.getMarca());
-        avion.setAsientosBasico(avionDTO.getAsientosBasico());
-        avion.setAsientosPremium(avionDTO.getAsientosPremium());
-        avion.setAsientosPrimeraClase(avionDTO.getAsientosPrimeraClase());
-        return this.avionServiceImpl.crearAvion(avion);
+        // Avion avion = new Avion();
+        // avion.setMarca(avionDTO.getMarca());
+        // avion.setAsientosBasico(avionDTO.getAsientosBasico());
+        // avion.setAsientosPremium(avionDTO.getAsientosPremium());
+        // avion.setAsientosPrimeraClase(avionDTO.getAsientosPrimeraClase());
+        // return this.avionServiceImpl.crearAvion(avion);
+        return null;
     }
 }
