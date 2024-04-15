@@ -1,12 +1,13 @@
 CREATE DATABASE IF NOT EXISTS  aerolinea;
 USE aerolinea;
 
+--check
 CREATE TABLE paises (
   id_pais INT AUTO_INCREMENT,
   nombre VARCHAR(45) NULL,
   PRIMARY KEY (id_pais)
 );
-
+--check
 CREATE TABLE ciudades (
   id_ciudad INT AUTO_INCREMENT,
   id_pais INT NOT NULL,
@@ -14,7 +15,7 @@ CREATE TABLE ciudades (
   PRIMARY KEY (id_ciudad),
   FOREIGN KEY (id_pais) REFERENCES paises (id_pais)
 );
-
+--check
 CREATE TABLE aeropuertos (
   id_aeropuerto INT AUTO_INCREMENT,
   nombre VARCHAR(45) NOT NULL,
@@ -23,7 +24,7 @@ CREATE TABLE aeropuertos (
   FOREIGN KEY (id_ciudad) REFERENCES ciudades (id_ciudad)
 );
 
-
+--check
 CREATE TABLE destinos (
   id_destino INT AUTO_INCREMENT,
   id_ciudad_origen INT NOT NULL,
@@ -33,7 +34,7 @@ CREATE TABLE destinos (
   FOREIGN KEY (id_ciudad_destino) REFERENCES ciudades (id_ciudad),
   FOREIGN KEY (id_ciudad_origen) REFERENCES ciudades (id_ciudad)
 );
-
+--check
 CREATE TABLE aviones (
   id_avion INT AUTO_INCREMENT,
   nombre VARCHAR(45) NULL,
@@ -42,7 +43,7 @@ CREATE TABLE aviones (
   marca VARCHAR(45) NOT NULL,
   PRIMARY KEY (id_avion)
 );
-
+-- check
 CREATE TABLE vuelos (
   id_vuelo INT AUTO_INCREMENT,
   id_avion INT NOT NULL,
@@ -54,14 +55,14 @@ CREATE TABLE vuelos (
   FOREIGN KEY (id_avion) REFERENCES aviones (id_avion),
   FOREIGN KEY (id_destino) REFERENCES destinos (id_destino)
 );
-
+-- check
 CREATE TABLE clases (
   id_clase INT AUTO_INCREMENT,
   nombre VARCHAR(45) NOT NULL,
   precio INT NOt NULL,
   PRIMARY KEY (id_clase)
 );
-
+-- check
 CREATE TABLE asientos (
   id_asiento INT AUTO_INCREMENT,
   id_avion INT NOT NULL,
@@ -72,7 +73,7 @@ CREATE TABLE asientos (
   FOREIGN KEY (id_avion) REFERENCES aviones (id_avion),
   FOREIGN KEY (id_clase) REFERENCES clases (id_clase)
 );
-
+--check
 CREATE TABLE clientes (
   id_cliente INT AUTO_INCREMENT,
   nombre VARCHAR(45) NOT NULL,
@@ -84,7 +85,7 @@ CREATE TABLE clientes (
   cliente_registrado BOOLEAN DEFAULT FALSE, 
   PRIMARY KEY (id_cliente)
 );
-
+--check
 CREATE TABLE boletos (
   id_boleto INT AUTO_INCREMENT,
   id_cliente INT NOT NULL,
@@ -97,7 +98,7 @@ CREATE TABLE boletos (
   FOREIGN KEY (id_asiento) REFERENCES asientos (id_asiento),
   FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente)
 );
-
+--check
 CREATE TABLE ventas (
   id_venta INT AUTO_INCREMENT,
   id_cliente INT NOT NULL,
@@ -109,7 +110,7 @@ CREATE TABLE ventas (
   PRIMARY KEY (id_venta),
   FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente)
 );
-
+--check
 CREATE TABLE medio_venta (
   id_medio_venta INT AUTO_INCREMENT,
   descripcion VARCHAR(45) NOT NULL,
