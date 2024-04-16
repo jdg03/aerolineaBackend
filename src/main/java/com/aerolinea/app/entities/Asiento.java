@@ -10,9 +10,11 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+
 @Entity
-@Table(name = "asientos")
+@Table(name ="asientos")
 @Data
+
 public class Asiento {
 
     @Id
@@ -29,5 +31,5 @@ public class Asiento {
     @OneToOne
     @JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
     private Clase clase;
-
+    
 }

@@ -19,6 +19,7 @@ public class Destino {
     @Column(name = "id_destino")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDestino;
+    
     private int distancia;
 
     @OneToOne
