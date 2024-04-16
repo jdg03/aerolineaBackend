@@ -9,3 +9,4 @@ import com.aerolinea.app.entities.Avion;
 public interface AvionRepository extends CrudRepository<Avion, Integer> {
 
 }
+    

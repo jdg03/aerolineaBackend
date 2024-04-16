@@ -18,27 +18,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @RestController
-@RequestMapping("api/clientes")
+@RequestMapping("/api/clientes")
 public class ClienteController {
-    
+
     @Autowired
     private ClienteServiceImpl clienteServiceImpl;
 
     @PostMapping("/crear")
-    public Cliente crearUsuario(@RequestBody Cliente cliente){
-        return this.clienteServiceImpl.crearCliente(cliente);        
+    public Cliente crearUsuario(@RequestBody Cliente cliente) {
+        return this.clienteServiceImpl.crearCliente(cliente);
     }
 
     @GetMapping("/obtener")
-    public List<Cliente> obtenerCliente(){
+    public List<Cliente> obtenerCliente() {
         return this.clienteServiceImpl.obtenerCLientes();
     }
 
     @PutMapping("/actualizar/{id}")
-    public Cliente actualizarCliente(@PathVariable int id, 
-                                @RequestBody Cliente cliente) {
+    public Cliente actualizarCliente(@PathVariable int id,
+            @RequestBody Cliente cliente) {
         return this.clienteServiceImpl.actualizarCliente(id, cliente);
     }
 
@@ -48,7 +47,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/eliminar")
-    public String eliminarCliente(@RequestParam int id){
+    public String eliminarCliente(@RequestParam int id) {
         return this.clienteServiceImpl.eliminarPorId(id);
     }
 }
