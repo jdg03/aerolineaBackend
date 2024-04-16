@@ -32,4 +32,14 @@ public class AvionServiceImpl implements AvionService {
         return this.avionRepository.findById(id);
     }
 
+    @Override
+    public String eliminarPorId(int id) {
+        if(this.avionRepository.findById(id).isPresent()){
+            this.avionRepository.deleteById(id);
+            return "Avion Eliminado";
+        }       
+
+        return "El Avion no existe";
+    }
+
 }

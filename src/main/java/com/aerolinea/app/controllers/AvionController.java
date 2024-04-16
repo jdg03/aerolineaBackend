@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Avion;
@@ -36,5 +38,15 @@ public class AvionController {
         // avion.setAsientosPrimeraClase(avionDTO.getAsientosPrimeraClase());
         // return this.avionServiceImpl.crearAvion(avion);
         return null;
+    }
+
+    /*@PostMapping("/avion/crear")
+    public Avion crearAvion2(@RequestBody Avion avion) {
+        return this.avionServiceImpl.crearAvion(avion);
+    }*/
+
+    @DeleteMapping("/eliminar")
+    public String eliminarUsuario(@RequestParam int id){
+        return this.avionServiceImpl.eliminarPorId(id);
     }
 }

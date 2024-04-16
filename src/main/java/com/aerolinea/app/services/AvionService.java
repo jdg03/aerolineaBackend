@@ -11,4 +11,6 @@ public interface AvionService {
     public List<Avion> listarAviones();
 
     public Optional<Avion> buscarAvion(int id);
+
+    public String eliminarPorId(int id);
 }
