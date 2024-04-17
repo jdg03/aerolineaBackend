@@ -50,9 +50,17 @@ public class AvionController {
     public String eliminarUsuario(@PathVariable int id) {
         return this.avionServiceImpl.eliminarPorId(id);
     }
+
     @PutMapping("/actualizar/{id}")
-    public Avion actualizarAvion(@PathVariable int id, AvionDTO avionDTO){
-        // Avion avionActualizar
+    public Avion actualizarAvion(@PathVariable int id, @RequestBody AvionDTO avionDTO) {
+        Avion avionActualizar = this.avionServiceImpl.buscarAvion(id).get();
+        if (avionActualizar != null) {
+            avionActualizar.setFabricante(avionDTO.getFabricante());
+            avionActualizar.setModelo(avionDTO.getModelo());
+            avionActualizar.setCapacidad(avionDTO.getCapacidad());
+            avionActualizar.setNombre(avionDTO.getNombre());
+            return this.avionServiceImpl.crearAvion(avionActualizar);
+        }
         return null;
     }
 }
