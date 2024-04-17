@@ -20,6 +20,6 @@ public class Avion {
     private String nombre;
     private String modelo;
     private int capacidad;
-    private String marca;
+    private String fabricante;
 
 }

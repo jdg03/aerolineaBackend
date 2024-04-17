@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class AvionDTO {
 
-    private String marca;
-    private int asientosPrimeraClase;
-    private int asientosPremium;
-    private int asientosBasico;
+    private String nombre;
+    private String modelo;
+    private int capacidad;
+    private String fabricante;
 
 }
