@@ -30,7 +30,7 @@ public class PaisController {
         return this.paisServiceImpl.crearPais(pais);
     }
 
-    @GetMapping("")
+    @GetMapping("/obtener")
     public List<Pais> paises() {
 
         return this.paisServiceImpl.obtenerPaises();
