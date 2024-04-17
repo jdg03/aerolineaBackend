@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Pais;
+import com.aerolinea.app.entities.dto.PaisDTO;
 import com.aerolinea.app.services.impl.PaisServiceImpl;
 
 @RestController
@@ -25,36 +26,35 @@ public class PaisController {
     PaisServiceImpl paisServiceImpl;
 
     @PostMapping("/crear")
-    public Pais crearVuelo(@RequestBody Pais pais) {
-    
+    public Pais crearVuelo(@RequestBody PaisDTO paisDTO) {
+        Pais pais = new Pais();
+        pais.setNombre(paisDTO.getNombre());
         return this.paisServiceImpl.crearPais(pais);
     }
 
     @GetMapping("")
     public List<Pais> paises() {
-
         return this.paisServiceImpl.obtenerPaises();
     }
 
-
     @PutMapping("/actualizar/{id}")
-    public Pais actualizarVuelo(@PathVariable int id, @RequestBody Pais pais) {
-
-        return this.paisServiceImpl.actualizarPais(id, pais);
+    public Pais actualizarVuelo(@PathVariable int id, @RequestBody PaisDTO paisDTO) {
+        Pais actualizarPais = this.paisServiceImpl.buscarPorId(id).get();
+        if (actualizarPais != null) {
+            actualizarPais.setNombre(paisDTO.getNombre());
+            return this.paisServiceImpl.actualizarPais(id, actualizarPais);
+        }
+        return actualizarPais;
     }
 
-    @GetMapping("/buscar")
-    public Optional<Pais> buscarPorId(@RequestParam int id) {
-
+    @GetMapping("/buscar/{id}")
+    public Optional<Pais> buscarPorId(@PathVariable int id) {
         return this.paisServiceImpl.buscarPorId(id);
     }
 
     @DeleteMapping("/eliminar")
     public String eliminarPais(@RequestParam int id) {
-        
         return this.paisServiceImpl.eliminarPorId(id);
     }
 
-
-    
 }
