@@ -26,27 +26,32 @@ public class CiudadController {
 
     @PostMapping("/crear")
     public Ciudad crearCiudad(@RequestBody Ciudad ciudad) {
-     return this.ciudadServiceImpl.crearCiudad(ciudad);
+    
+        return this.ciudadServiceImpl.crearCiudad(ciudad);
     }
   
     @GetMapping("")
     public List<Ciudad> paises() {
+
         return this.ciudadServiceImpl.obtenerCiudades();
     }
 
 
     @PutMapping("/actualizar/{id}")
     public Ciudad actualizarCiudad(@PathVariable int id, @RequestBody Ciudad ciudad) {
+
         return this.ciudadServiceImpl.actualizarCiudad(id, ciudad);
     }
 
     @GetMapping("/buscar")
     public Optional<Ciudad> buscarPorId(@RequestParam int id) {
+
         return this.ciudadServiceImpl.buscarPorId(id);
     }
 
     @DeleteMapping("/eliminar")
     public String eliminarPais(@RequestParam int id) {
+
         return this.ciudadServiceImpl.eliminarPorId(id);
     }
 
