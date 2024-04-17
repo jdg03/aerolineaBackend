@@ -16,5 +16,5 @@ public interface PaisService {
 
     public Pais actualizarPais(int id, Pais pais);
 
-    public String eliminarPais(int id);
+    public String eliminarPorId(int id);
 } 

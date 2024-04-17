@@ -51,7 +51,7 @@ public class CiudadServiceImpl implements CiudadService {
     }
 
     @Override
-    public String eliminarCiudad(int id) {
+    public String eliminarPorId(int id) {
 
         if(this.ciudadRepository.findById(id).isPresent()){
             this.ciudadRepository.deleteById(id);

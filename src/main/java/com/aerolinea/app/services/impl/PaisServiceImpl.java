@@ -50,7 +50,7 @@ public class PaisServiceImpl implements PaisService{
     }
 
     @Override
-    public String eliminarPais(int id) {
+    public String eliminarPorId(int id) {
 
         if(this.paisRepository.findById(id).isPresent()){
             this.paisRepository.deleteById(id);

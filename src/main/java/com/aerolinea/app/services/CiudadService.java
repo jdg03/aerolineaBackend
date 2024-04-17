@@ -15,6 +15,6 @@ public interface CiudadService {
 
     public Ciudad actualizarCiudad(int id, Ciudad ciudad);
 
-    public String eliminarCiudad(int id);
+    public String eliminarPorId(int id);
     
 } 
