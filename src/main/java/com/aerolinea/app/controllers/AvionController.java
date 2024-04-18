@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.aerolinea.app.entities.Asiento;
 import com.aerolinea.app.entities.Avion;
 import com.aerolinea.app.entities.dto.AvionDTO;
 import com.aerolinea.app.services.impl.AvionServiceImpl;
@@ -63,4 +64,12 @@ public class AvionController {
         }
         return null;
     }
+
+    @GetMapping("/obtenerAsientos/{idAvion}")
+    public List<Asiento> obtenetAsientos(@PathVariable int idAvion) {
+
+        return this.avionServiceImpl.obtenerAsientos(idAvion);
+    }
+
+
 }

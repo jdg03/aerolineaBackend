@@ -1,5 +1,7 @@
 package com.aerolinea.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,13 +24,16 @@ public class Asiento {
     @Column(name = "id_asiento")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAsiento;
+
     @Column(name = "numero_asiento")
     private int numeroAsiento;
     private boolean estado;
 
     @ManyToOne
     @JoinColumn(name = "id_avion", referencedColumnName = "id_avion")
+    @JsonManagedReference
     private Avion avion;
+
     @OneToOne
     @JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
     private Clase clase;

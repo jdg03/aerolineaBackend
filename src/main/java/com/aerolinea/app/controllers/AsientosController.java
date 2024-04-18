@@ -38,7 +38,7 @@ public class AsientosController {
         return this.asientoServiceImpl.buscarPorId(id);
     }
 
-
+    
 
     
 }

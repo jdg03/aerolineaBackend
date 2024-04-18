@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aerolinea.app.entities.Asiento;
+import com.aerolinea.app.entities.Avion;
 import com.aerolinea.app.repositories.AsientoRepository;
 import com.aerolinea.app.services.AsientoService;
 
@@ -47,5 +48,7 @@ public class AsientoServiceImpl implements AsientoService {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'eliminarAsiento'");
     }
+
+    
     
 }

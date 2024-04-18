@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.aerolinea.app.entities.Asiento;
+import com.aerolinea.app.entities.Avion;
 
 public interface AsientoService {
 
@@ -16,5 +17,6 @@ public interface AsientoService {
     public Asiento actualizarAsiento(int id, Asiento asiento);
 
     public String eliminarAsiento(int id);
+
     
 }

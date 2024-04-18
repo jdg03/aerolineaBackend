@@ -7,7 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aerolinea.app.entities.Asiento;
 import com.aerolinea.app.entities.Avion;
+import com.aerolinea.app.repositories.AsientoRepository;
 import com.aerolinea.app.repositories.AvionRepository;
 import com.aerolinea.app.services.AvionService;
 
@@ -16,6 +18,9 @@ public class AvionServiceImpl implements AvionService {
 
     @Autowired
     private AvionRepository avionRepository;
+
+    @Autowired
+    private AsientoRepository asientoRepository;
 
     @Override
     public Avion crearAvion(Avion avion) {
@@ -39,6 +44,22 @@ public class AvionServiceImpl implements AvionService {
             return "Avion Eliminado";
         }       
         return "El Avion no existe";
+    }
+
+    @Override
+    public List<Asiento> obtenerAsientos(int idAvion) {
+    
+       
+        Avion avion = avionRepository.findById(idAvion).orElse(null);
+        if (avion != null) {
+            // Retornar la lista de asientos asociados al avión
+            return avion.getAsiento();
+        } else {
+            // Manejar el caso en que el avión no sea encontrado
+           
+            return null;
+        }
+       
     }
 
 }
