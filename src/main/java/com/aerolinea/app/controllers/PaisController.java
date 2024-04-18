@@ -48,7 +48,7 @@ public class PaisController {
     }
 
     @GetMapping("/buscar/{id}")
-    public Optional<Pais> buscarPorId(@PathVariable int id) {
+    public Optional<Pais> buscarPorId(@RequestParam int id) {
         return this.paisServiceImpl.buscarPorId(id);
     }
 
