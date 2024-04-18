@@ -27,12 +27,12 @@ public class Destino {
     private int distancia;
 
     @OneToOne
-    @JsonBackReference
+    @JsonManagedReference
     @JoinColumn(name = "id_ciudad_origen", referencedColumnName = "id_ciudad")
     private Ciudad ciudadOrigen;
 
     @OneToOne
-    @JsonBackReference
+    @JsonManagedReference
     @JoinColumn(name = "id_ciudad_destino", referencedColumnName = "id_ciudad")
     private Ciudad ciudadDestino;
 
