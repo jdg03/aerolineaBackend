@@ -1,5 +1,9 @@
 package com.aerolinea.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,10 +27,18 @@ public class Destino {
     private int distancia;
 
     @OneToOne
-    @JoinColumn(name = "id_ciudad_destino", referencedColumnName = "id_ciudad")
-    private Ciudad ciudadDestino;
-    @OneToOne
+    @JsonBackReference
     @JoinColumn(name = "id_ciudad_origen", referencedColumnName = "id_ciudad")
     private Ciudad ciudadOrigen;
+
+    @OneToOne
+    @JsonBackReference
+    @JoinColumn(name = "id_ciudad_destino", referencedColumnName = "id_ciudad")
+    private Ciudad ciudadDestino;
+
+
+    @OneToOne(mappedBy = "destino")
+    @JsonBackReference
+    private Vuelo vuelo;
 
 }

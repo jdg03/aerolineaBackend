@@ -2,6 +2,9 @@ package com.aerolinea.app.entities;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,10 +30,12 @@ public class Vuelo {
     private String estado;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "id_avion", referencedColumnName = "id_avion")
     private Avion avion;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "id_destino", referencedColumnName = "id_destino")
     private Destino destino;
 
