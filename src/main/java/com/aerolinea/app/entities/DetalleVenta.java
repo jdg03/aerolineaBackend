@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -22,11 +23,11 @@ public class DetalleVenta {
     @Column(name = "cantidad_boletos")
     private int cantidadBoletos;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_venta", referencedColumnName = "id_venta")
     private Venta venta;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_medio_venta", referencedColumnName = "id_medio_venta")
     private MedioVenta medioVenta;
 

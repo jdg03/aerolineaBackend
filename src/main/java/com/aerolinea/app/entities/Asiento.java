@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -25,7 +26,7 @@ public class Asiento {
     private int numeroAsiento;
     private boolean estado;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_avion", referencedColumnName = "id_avion")
     private Avion avion;
     @OneToOne
