@@ -31,8 +31,8 @@ public class Ciudad {
     @JoinColumn(name = "id_pais", referencedColumnName = "id_pais")
     private Pais pais;
 
-    @JsonBackReference
     @OneToOne(mappedBy = "ciudadOrigen")
+    @JsonBackReference
     private Destino ciudadOrigen;
 
     @JsonBackReference

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Pais;
@@ -38,7 +37,7 @@ public class PaisController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public Pais actualizarVuelo(@PathVariable int id, @RequestBody PaisDTO paisDTO) {
+    public Pais actualizarPais(@PathVariable int id, @RequestBody PaisDTO paisDTO) {
         Pais actualizarPais = this.paisServiceImpl.buscarPorId(id).get();
         if (actualizarPais != null) {
             actualizarPais.setNombre(paisDTO.getNombre());
@@ -52,9 +51,9 @@ public class PaisController {
         return this.paisServiceImpl.buscarPorId(id);
     }
 
-    @DeleteMapping("/eliminar")
-    public String eliminarPais(@RequestParam int id) {
+    @DeleteMapping("/eliminar/{id}")
+    public String eliminarPais(@PathVariable int id) {
         return this.paisServiceImpl.eliminarPorId(id);
     }
-    
+
 }
