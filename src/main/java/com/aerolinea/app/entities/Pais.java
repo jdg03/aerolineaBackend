@@ -21,8 +21,8 @@ public class Pais {
     private int idPais;
     private String nombre;
 
-    @OneToMany(mappedBy = "pais")
     @JsonBackReference
+    @OneToMany(mappedBy = "pais")
     private List<Ciudad> ciudades;
 
 }
