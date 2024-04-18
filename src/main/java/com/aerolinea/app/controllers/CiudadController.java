@@ -28,6 +28,7 @@ public class CiudadController {
 
     @PostMapping("/crear")
     public Ciudad crearCiudad(@RequestBody Ciudad ciudad) {
+        
         System.out.println(ciudad);
         return this.ciudadServiceImpl.crearCiudad(ciudad);
     }

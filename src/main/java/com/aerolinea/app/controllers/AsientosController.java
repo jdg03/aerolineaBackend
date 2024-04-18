@@ -22,7 +22,7 @@ public class AsientosController {
     AsientoServiceImpl asientoServiceImpl;
 
     @PostMapping("/crear")
-    public Asiento crearCiudad(@RequestBody Asiento asiento) {
+    public Asiento crearAsiento(@RequestBody Asiento asiento) {
        
         return this.asientoServiceImpl.crearAsiento(asiento);
     }
