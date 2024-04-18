@@ -3,6 +3,7 @@ package com.aerolinea.app.services.impl;
 import java.time.LocalDate;
 import java.util.Random;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,5 +64,13 @@ public class VueloServiceImpl implements VueloService {
     public Aeropuerto buscarAeropuertoLlegada(int id) {
         return this.aeropuertoRepository.findById(id).get();
     }
+
+    @Override
+    public Optional<Vuelo> buscarPorId(int id) {
+       
+        return this.vueloRepository.findById(id);
+    }
+
+
 
 }
