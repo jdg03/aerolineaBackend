@@ -23,7 +23,7 @@ public class CiudadServiceImpl implements CiudadService {
 
     @Override
     public Ciudad crearCiudad(Ciudad ciudad) {
-        
+
         Pais pais = this.paisRepository.findById(ciudad.getPais().getIdPais()).get();
         ciudad.setPais(pais);
         return this.ciudadRepository.save(ciudad);

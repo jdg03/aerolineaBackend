@@ -3,7 +3,9 @@ package com.aerolinea.app.entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -21,7 +23,8 @@ public class Pais {
     private int idPais;
     private String nombre;
 
-    @JsonBackReference
+    // @JsonBackReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "pais")
     private List<Ciudad> ciudades;
 

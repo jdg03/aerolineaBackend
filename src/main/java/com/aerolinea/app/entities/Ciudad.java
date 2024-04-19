@@ -26,17 +26,10 @@ public class Ciudad {
     private int idCiudad;
     private String nombre;
 
-    @JsonManagedReference
+    // @JsonManagedReference
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_pais", referencedColumnName = "id_pais")
     private Pais pais;
-
-    @OneToOne(mappedBy = "ciudadOrigen")
-    @JsonBackReference
-    private Destino ciudadOrigen;
-
-    @JsonBackReference
-    @OneToOne(mappedBy = "ciudadDestino")
-    private Destino ciudadDestino;
 
 }
