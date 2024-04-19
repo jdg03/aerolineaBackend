@@ -2,7 +2,7 @@ package com.aerolinea.app.entities;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -25,8 +25,11 @@ public class Vuelo {
     @Column(name = "id_vuelo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVuelo;
+    
+    
     private LocalDate fechaSalida;
     private LocalDate fechaLlegada;
+    
     private String estado;
 
     @OneToOne

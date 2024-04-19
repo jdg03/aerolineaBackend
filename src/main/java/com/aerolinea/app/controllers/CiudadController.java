@@ -34,7 +34,7 @@ public class CiudadController {
     }
 
     @GetMapping("")
-    public List<Ciudad> paises() {
+    public List<Ciudad> ciudades() {
         return this.ciudadServiceImpl.obtenerCiudades();
     }
 
