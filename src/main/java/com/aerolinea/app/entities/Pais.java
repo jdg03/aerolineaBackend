@@ -24,6 +24,7 @@ public class Pais {
     private String nombre;
 
     // @JsonBackReference
+    //JsonIgnore
     @JsonManagedReference
     @OneToMany(mappedBy = "pais")
     private List<Ciudad> ciudades;

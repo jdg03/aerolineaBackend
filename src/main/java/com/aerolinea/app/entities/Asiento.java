@@ -1,5 +1,7 @@
 package com.aerolinea.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -27,11 +29,13 @@ public class Asiento {
 
     @Column(name = "numero_asiento")
     private int numeroAsiento;
-    private boolean estado;
+    public boolean estado;
 
     @ManyToOne
     @JoinColumn(name = "id_avion", referencedColumnName = "id_avion")
-    @JsonManagedReference
+    //@JsonManagedReference
+    //@JsonBackReference //-
+    @JsonIgnore
     private Avion avion;
 
     @OneToOne

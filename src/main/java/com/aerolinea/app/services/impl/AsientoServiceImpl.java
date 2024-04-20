@@ -38,10 +38,23 @@ public class AsientoServiceImpl implements AsientoService {
     }
 
     @Override
-    public Asiento actualizarAsiento(int id, Asiento asiento) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actualizarAsiento'");
+    public Asiento actualizarAsiento(int id, Asiento nuevoAsiento) {
+        Asiento asientoActualizar = this.asientoRepository.findById(id).orElse(null);
+    
+        if (asientoActualizar != null) {
+            // Actualizar los campos del asiento
+            //asientoActualizar.setNumeroAsiento(nuevoAsiento.getNumeroAsiento());
+            asientoActualizar.setEstado(nuevoAsiento.estado);
+            
+           // asientoActualizar.setClase(nuevoAsiento.getClase());
+    
+            // Guardar los cambios en la base de datos
+            this.asientoRepository.save(asientoActualizar);
+        }
+    
+        return asientoActualizar;
     }
+    
 
     @Override
     public String eliminarAsiento(int id) {

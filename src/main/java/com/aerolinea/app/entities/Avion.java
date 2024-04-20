@@ -32,10 +32,12 @@ public class Avion {
 
     @OneToOne(mappedBy = "avion")
     @JsonBackReference
+    //JsonIgnore
     private Vuelo vuelo;
 
     @OneToMany(mappedBy = "avion")
     @JsonBackReference
+    //JsonIgnore
     private List<Asiento> asiento;
 
     
