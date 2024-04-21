@@ -11,7 +11,6 @@ import com.aerolinea.app.entities.Boleto;
 import com.aerolinea.app.entities.Vuelo;
 import com.aerolinea.app.entities.dto.BoletoDTO;
 import com.aerolinea.app.repositories.AsientoRepository;
-import com.aerolinea.app.repositories.AvionRepository;
 import com.aerolinea.app.repositories.BoletoRepository;
 import com.aerolinea.app.repositories.VueloRepository;
 import com.aerolinea.app.services.BoletoService;

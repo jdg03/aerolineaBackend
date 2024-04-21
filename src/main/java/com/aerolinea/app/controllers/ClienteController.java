@@ -41,8 +41,8 @@ public class ClienteController {
         return this.clienteServiceImpl.actualizarCliente(id, cliente);
     }
 
-    @GetMapping("/buscar")
-    public Optional<Cliente> buscarPorId(@RequestParam int id) {
+    @GetMapping("/buscar/{id}")
+    public Optional<Cliente> buscarPorId(@PathVariable int id) {
         return this.clienteServiceImpl.buscarPorId(id);
     }
 
