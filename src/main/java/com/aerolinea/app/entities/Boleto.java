@@ -21,12 +21,9 @@ public class Boleto {
     @Column(name = "id_boleto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idBoleto;
-    private LocalDate fecha;
+   
     private double precioTotal;
 
-    @OneToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
-    private Cliente cliente;
 
     @OneToOne
     @JoinColumn(name = "id_asiento", referencedColumnName = "id_asiento")

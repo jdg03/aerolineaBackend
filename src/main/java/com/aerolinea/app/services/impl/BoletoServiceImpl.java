@@ -36,9 +36,8 @@ public class BoletoServiceImpl implements BoletoService{
         Boleto boletoActualizar = this.boletoRepository.findById(id).get();
 
         if(null != boletoActualizar){
-            boletoActualizar.setFecha(boleto.getFecha());
+    
             boletoActualizar.setPrecioTotal(boleto.getPrecioTotal());
-            boletoActualizar.setCliente(boleto.getCliente());
             boletoActualizar.setAsiento(boleto.getAsiento());
             boletoActualizar.setVuelo(boleto.getVuelo());
             this.boletoRepository.save(boletoActualizar);
