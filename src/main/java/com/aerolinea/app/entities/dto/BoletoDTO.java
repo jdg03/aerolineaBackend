@@ -9,7 +9,6 @@ public class BoletoDTO {
 
     private int idVuelo;
     private int idAsiento;
-    private LocalDate fecha;
     private double precionTotal;
     
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Boleto;
+import com.aerolinea.app.entities.dto.BoletoDTO;
 import com.aerolinea.app.services.impl.BoletoServiceImpl;
 
 
@@ -26,8 +27,8 @@ public class BoletoController {
     BoletoServiceImpl boletoServiceImpl;
 
     @PostMapping("/crear")
-    public Boleto crearBoleto(@RequestBody Boleto boleto){
-        return this.boletoServiceImpl.crearBoleto(boleto);
+    public Boleto crearBoleto(@RequestBody BoletoDTO boletoDTO){
+        return this.boletoServiceImpl.crearBoleto(boletoDTO);
     }
 
     @GetMapping("/obtener")

@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.aerolinea.app.entities.Boleto;
+import com.aerolinea.app.entities.dto.BoletoDTO;
 
 public interface BoletoService {
     
-    public Boleto crearBoleto(Boleto boleto);
+    public Boleto crearBoleto(BoletoDTO boletoDTO);
 
     public List<Boleto> obtenerBoletos();
 
