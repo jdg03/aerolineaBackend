@@ -7,7 +7,7 @@ import com.aerolinea.app.entities.Vuelo;
 
 public interface VueloService {
 
-    public Vuelo crearVuelo(int idAvion, int idAeropuertoSalida, int idAeropuertoLlegada);
+    public Vuelo crearVuelo(Vuelo vuelo);
 
     public List<Vuelo> listarVuelos();
 

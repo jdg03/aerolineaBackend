@@ -40,17 +40,8 @@ public class VueloServiceImpl implements VueloService {
     }
 
     @Override
-    public Vuelo crearVuelo(int idAvion, int idAeropuertoSalida, int idAeropuertoLlegada) {
-        // Avion avion = buscarAvion(idAvion);
-        // Aeropuerto llegada = buscarAeropuertoLlegada(idAeropuertoLlegada);
-        // Aeropuerto salida = buscarAeropuertoSalida(idAeropuertoSalida);
-        // Vuelo nuevoVuelo = new Vuelo();
-        // nuevoVuelo.setLlegada(llegada);
-        // nuevoVuelo.setSalida(salida);
-        // nuevoVuelo.setFechaSalida(LocalDate.now());
-        // nuevoVuelo.setNumeroVuelo("MYA");
-        // nuevoVuelo.setAvion(avion);
-        return null;
+    public Vuelo crearVuelo(Vuelo vuelo) {
+        return this.vueloRepository.save(vuelo);
     }
 
     public Avion buscarAvion(int id) {

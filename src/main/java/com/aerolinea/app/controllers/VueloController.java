@@ -28,7 +28,7 @@ public class VueloController {
 
     @PostMapping("/crear")
     public Vuelo crearVuelo(@RequestBody Vuelo vuelo) {
-        return null;
+        return this.vueloServiceImpl.crearVuelo(vuelo);
     }
 
     @GetMapping("/buscar/{id}")

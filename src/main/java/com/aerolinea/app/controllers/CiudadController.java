@@ -19,7 +19,7 @@ import com.aerolinea.app.entities.Pais;
 import com.aerolinea.app.services.impl.CiudadServiceImpl;
 import com.aerolinea.app.services.impl.PaisServiceImpl;
 
-@RestController
+@RestController 
 @RequestMapping("/api/ciudades")
 public class CiudadController {
 

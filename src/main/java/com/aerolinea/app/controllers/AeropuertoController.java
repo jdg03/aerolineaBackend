@@ -27,13 +27,8 @@ public class AeropuertoController {
     }
 
     @PostMapping("/crear")
-    public Aeropuerto crearAeropuerto(@RequestBody AeropuertoDTO aeropuertoDTO) {
-        // Aeropuerto aeropuerto = new Aeropuerto();
-        // aeropuerto.setCodigoIata(aeropuertoDTO.getCodigoIata());
-        // aeropuerto.setNombre(aeropuertoDTO.getNombre());
-        // aeropuerto.setPais(aeropuertoDTO.getPais());
-        // return this.aeropuertoServiceImpl.crearAeropuerto(aeropuerto);
-        return null;
+    public Aeropuerto crearAeropuerto(@RequestBody Aeropuerto aeropuerto) {
+        return this.aeropuertoServiceImpl.crearAeropuerto(aeropuerto);
     }
 
 }
