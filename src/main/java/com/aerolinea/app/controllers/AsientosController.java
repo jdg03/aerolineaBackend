@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Asiento;
+import com.aerolinea.app.entities.dto.AsientoDTO;
 import com.aerolinea.app.services.impl.AsientoServiceImpl;
 
 @RestController
@@ -24,9 +25,9 @@ public class AsientosController {
     AsientoServiceImpl asientoServiceImpl;
 
     @PostMapping("/crear")
-    public Asiento crearAsiento(@RequestBody Asiento asiento) {
+    public Asiento crearAsiento(@RequestBody AsientoDTO asientoDTO) {
        
-        return this.asientoServiceImpl.crearAsiento(asiento);
+        return this.asientoServiceImpl.crearAsiento(asientoDTO);
     }
 
     @GetMapping("/obtener")
@@ -41,9 +42,9 @@ public class AsientosController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public Asiento actualizar(@PathVariable int id, @RequestBody Asiento asiento){
+    public Asiento actualizar(@PathVariable int id, @RequestBody AsientoDTO asientoDTO){
         
-        return this.asientoServiceImpl.actualizarAsiento(id, asiento);
+        return this.asientoServiceImpl.actualizarAsiento(id, asientoDTO);
     }
 
 

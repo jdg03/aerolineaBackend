@@ -4,17 +4,19 @@ import java.util.List;
 import java.util.Optional;
 
 import com.aerolinea.app.entities.Asiento;
-import com.aerolinea.app.entities.Avion;
+import com.aerolinea.app.entities.dto.AsientoDTO;
+
 
 public interface AsientoService {
 
-    public Asiento crearAsiento(Asiento asiento);
+    // recibe el los datos del dto en el body
+    public Asiento crearAsiento(AsientoDTO asiento);
 
     public List<Asiento> obtenerAsientos();
 
     public Optional<Asiento> buscarPorId(int id);
 
-    public Asiento actualizarAsiento(int id, Asiento asiento);
+    public Asiento actualizarAsiento(int id, AsientoDTO asiento);
 
     public String eliminarAsiento(int id);
 

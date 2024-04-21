@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.aerolinea.app.entities.Asiento;
 import com.aerolinea.app.entities.Avion;
+import com.aerolinea.app.entities.Clase;
+import com.aerolinea.app.entities.dto.AsientoDTO;
 import com.aerolinea.app.repositories.AsientoRepository;
+import com.aerolinea.app.repositories.AvionRepository;
+import com.aerolinea.app.repositories.ClaseRepository;
 import com.aerolinea.app.services.AsientoService;
 
 @Service
@@ -18,10 +22,33 @@ public class AsientoServiceImpl implements AsientoService {
     @Autowired
     AsientoRepository asientoRepository;
 
+    @Autowired
+    AvionRepository avionRepository;
+
+    @Autowired
+    ClaseRepository claseRepository;
+
     @Override
-    public Asiento crearAsiento(Asiento asiento) {
-       
-        return this.asientoRepository.save(asiento);
+    public Asiento crearAsiento(AsientoDTO asientoDTO) {
+
+        // entidades que se le asignaran al asiento
+        Avion avion = this.avionRepository.findById(asientoDTO.getIdAvion()).orElse(null);
+        Clase clase = this.claseRepository.findById(asientoDTO.getIdClase()).orElse(null);
+
+        if (avion != null && clase != null) {
+            Asiento asiento = new Asiento();
+            asiento.setNumeroAsiento(asientoDTO.getNumeroAsiento());
+            asiento.setEstado(asientoDTO.isEstado());
+            asiento.setAvion(avion);
+            asiento.setClase(clase);
+
+            asiento = this.asientoRepository.save(asiento);
+
+            return asiento;
+        } else {
+            throw new RuntimeException("No se pudo crear el asiento");
+        }
+  
     }
 
     @Override
@@ -38,13 +65,13 @@ public class AsientoServiceImpl implements AsientoService {
     }
 
     @Override
-    public Asiento actualizarAsiento(int id, Asiento nuevoAsiento) {
-        Asiento asientoActualizar = this.asientoRepository.findById(id).orElse(null);
+    public Asiento actualizarAsiento(int id, AsientoDTO asientoDTO) {
+        Asiento asientoActualizar = this.asientoRepository.findById(id).get();
     
         if (asientoActualizar != null) {
             // Actualizar los campos del asiento
-            //asientoActualizar.setNumeroAsiento(nuevoAsiento.getNumeroAsiento());
-            asientoActualizar.setEstado(nuevoAsiento.estado);
+           
+           asientoActualizar.setEstado(asientoDTO.isEstado());
             
            // asientoActualizar.setClase(nuevoAsiento.getClase());
     
