@@ -27,9 +27,9 @@ public class VentaController {
     VentaServiceImpl ventaServiceImpl;
    
 
-    @PostMapping("/crear")
-    public Venta crearVenta(@RequestBody VentaDTO ventaDTO){
-        return this.ventaServiceImpl.crearVenta(ventaDTO);
+    @PostMapping("/crear/{idCliente}")
+    public Venta crearVenta(@PathVariable int idCliente, @RequestBody VentaDTO ventaDTO){
+        return this.ventaServiceImpl.crearVenta(idCliente,ventaDTO);
     }
 
     @GetMapping("/obtener")

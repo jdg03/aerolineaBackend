@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.aerolinea.app.entities.Cliente;
+import com.aerolinea.app.entities.Venta;
 
 public interface ClienteService {
     public Cliente crearCliente(Cliente cliente);
@@ -15,5 +16,7 @@ public interface ClienteService {
     public Cliente actualizarCliente(int id, Cliente cliente);
 
     public String eliminarPorId(int id);
+
+    public List<Venta> obtenerVentas(int idCliente);
 
 }

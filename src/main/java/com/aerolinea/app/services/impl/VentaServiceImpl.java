@@ -24,33 +24,33 @@ public class VentaServiceImpl implements VentaService {
 
 
     @Override
-    public Venta crearVenta(VentaDTO ventaDTO) {
+    public Venta crearVenta(int idCliente, VentaDTO ventaDTO) {
 
     // Obtener el cliente
-    Cliente cliente = this.clienteRepository.findById(ventaDTO.getIdCliente()).get(); 
+    Cliente cliente = this.clienteRepository.findById(idCliente).get(); 
 
     // Verificar si el cliente existe
     if(cliente != null){
 
         // Calcular descuento, impuesto y subtotal
-        double total = ventaDTO.getTotal();
+        double total = 500;
         double descuento = 0;
         
         //aplica descuento si el cliente esta registrado
         if (cliente.isClienteRegistrado()) {
 
-            descuento = total-(total*0.5);
-            total = total-descuento;
+            descuento = total*0.05;
+           
             
         }
-
         double impuesto = total * 0.15;
-        double subtotal = descuento+impuesto;
+        double subtotal = total+impuesto-descuento;
         LocalDate fecha =LocalDate.now();
 
         // Crear la venta
         Venta venta = new Venta();
         venta.setCliente(cliente);
+        venta.setTotal(total);
         venta.setFecha(fecha);
         venta.setDescuento(descuento);
         venta.setImpuesto(impuesto);

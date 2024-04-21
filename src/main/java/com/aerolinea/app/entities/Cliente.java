@@ -1,10 +1,15 @@
 package com.aerolinea.app.entities;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -24,5 +29,10 @@ public class Cliente {
     private String nacionalidad;
     private String pasaporte;
     private boolean clienteRegistrado;
+
+    @OneToMany(mappedBy = "cliente")
+    @JsonBackReference
+    //JsonIgnore
+    private List<Venta> ventas;
 
 }

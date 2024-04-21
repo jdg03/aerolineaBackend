@@ -3,6 +3,7 @@ package com.aerolinea.app.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Cliente;
+import com.aerolinea.app.entities.Venta;
 import com.aerolinea.app.services.impl.ClienteServiceImpl;
 
 import java.util.List;
@@ -50,4 +51,11 @@ public class ClienteController {
     public String eliminarCliente(@RequestParam int id) {
         return this.clienteServiceImpl.eliminarPorId(id);
     }
+
+    @GetMapping("/obtenerVentas/{idCliente}")
+    public List<Venta> obtenerVentas(@PathVariable int idCliente) {
+
+        return this.clienteServiceImpl.obtenerVentas(idCliente);
+    }
+
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aerolinea.app.entities.Cliente;
+import com.aerolinea.app.entities.Venta;
+
 import com.aerolinea.app.repositories.ClienteRepository;
 import com.aerolinea.app.services.ClienteService;
 
@@ -58,5 +60,20 @@ public class ClienteServiceImpl implements ClienteService{
         }       
 
         return "El Cliente no existe";
+    }
+
+    @Override
+    public List<Venta> obtenerVentas(int idCliente) {
+      
+        Cliente cliente = clienteRepository.findById(idCliente).orElse(null);
+        if (cliente != null) {
+            // Retornar la lista de asientos asociados al avión
+            return (List<Venta>) cliente.getVentas();
+        } else {
+            // Manejar el caso en que el avión no sea encontrado
+           
+            return null;
+        }
+       
     }
     }
