@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.aerolinea.app.entities.Destino;
+import com.aerolinea.app.entities.dto.DestinoDTO;
 
 public interface DestinoService {
     
-    public Destino crearDestino(Destino destino);
+    public Destino crearDestino(int destinoDTO , int ciudadOrigen,int ciudadDestino);
 
     public List<Destino> obtenerDestinos();
 

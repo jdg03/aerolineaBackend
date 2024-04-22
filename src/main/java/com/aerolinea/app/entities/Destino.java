@@ -35,8 +35,8 @@ public class Destino {
     @JoinColumn(name = "id_ciudad_destino", referencedColumnName = "id_ciudad")
     private Ciudad ciudadDestino;
 
-    @OneToOne(mappedBy = "destino")
-    @JsonBackReference
-    private Vuelo vuelo;
+    //@OneToOne(mappedBy = "destino")
+    //@JsonBackReference
+    //private Vuelo vuelo;
 
 }

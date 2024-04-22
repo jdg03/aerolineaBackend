@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Destino;
+import com.aerolinea.app.entities.dto.DestinoDTO;
 import com.aerolinea.app.services.impl.DestinoServiceImpl;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -25,9 +26,9 @@ public class DestinoController {
     @Autowired
     DestinoServiceImpl destinoServiceImpl;
 
-    @PostMapping("/crear")
-    public Destino crearDestino(@RequestBody Destino destino){
-        return this.destinoServiceImpl.crearDestino(destino);
+    @PostMapping("/crear/{distancia}/{ciudadO}/{ciudadD}")
+    public Destino crearDestino(@PathVariable int distancia, @PathVariable int ciudadO, @PathVariable int ciudadD){
+        return this.destinoServiceImpl.crearDestino(distancia, ciudadO, ciudadD);
     }
 
     @GetMapping("/obtener")

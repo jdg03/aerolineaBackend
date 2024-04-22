@@ -6,7 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aerolinea.app.entities.Ciudad;
 import com.aerolinea.app.entities.Destino;
+import com.aerolinea.app.entities.dto.DestinoDTO;
+import com.aerolinea.app.repositories.CiudadRepository;
 import com.aerolinea.app.repositories.DestinoRepository;
 import com.aerolinea.app.services.DestinoService;
 
@@ -16,10 +19,24 @@ public class DestinoServiceImpl implements DestinoService{
     @Autowired
     DestinoRepository destinoRepository;
 
+    @Autowired
+    CiudadRepository ciudadRepository;
+
     @Override
-    public Destino crearDestino(Destino destino) {
-        return this.destinoRepository.save(destino);
-    }
+public Destino crearDestino(int distancia, int ciudadO, int ciudadD) {
+    // No necesitas verificar si las ciudades son null porque si no se encuentran en la base de datos, findById() devolverá un Optional vacío
+    Ciudad ciudadOrigen = this.ciudadRepository.findById(ciudadO).orElseThrow(() -> new RuntimeException("No se encontró la ciudad de origen con ID: " + ciudadO));
+    Ciudad ciudadDestino = this.ciudadRepository.findById(ciudadD).orElseThrow(() -> new RuntimeException("No se encontró la ciudad de destino con ID: " + ciudadD));
+
+    Destino destino = new Destino();
+    destino.setCiudadOrigen(ciudadOrigen);
+    destino.setCiudadDestino(ciudadDestino);
+    destino.setDistancia(distancia);
+
+    // Guardar el destino en la base de datos
+    return this.destinoRepository.save(destino);
+}
+
 
     @Override
     public List<Destino> obtenerDestinos() {
@@ -39,7 +56,7 @@ public class DestinoServiceImpl implements DestinoService{
             destinoActualizar.setDistancia(destino.getDistancia());
             destinoActualizar.setCiudadOrigen(destino.getCiudadOrigen());
             destinoActualizar.setCiudadDestino(destino.getCiudadDestino());
-            destinoActualizar.setVuelo(destino.getVuelo());
+           // destinoActualizar.setVuelo(destino.getVuelo());
             this.destinoRepository.save(destinoActualizar);
         }
 
