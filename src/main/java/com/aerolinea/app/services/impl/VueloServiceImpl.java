@@ -62,6 +62,23 @@ public class VueloServiceImpl implements VueloService {
         return this.vueloRepository.findById(id);
     }
 
-
+  
+    @Override
+    public String eliminar(int id) {
+        try {
+            Optional<Vuelo> vuelo = this.vueloRepository.findById(id);
+    
+            if (vuelo.isPresent()) {
+                this.vueloRepository.deleteById(vuelo.get().getIdVuelo());
+                return "Vuelo eliminado";
+            } else {
+                return "El vuelo no existe";
+            }
+        } catch (Exception ex) {
+            // Manejo de la excepción
+            return "Error al eliminar el vuelo: " + ex.getMessage();
+        }
+    }
+    
 
 }

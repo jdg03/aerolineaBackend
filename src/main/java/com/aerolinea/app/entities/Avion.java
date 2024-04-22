@@ -36,7 +36,7 @@ public class Avion {
     private Vuelo vuelo;
 
     @OneToMany(mappedBy = "avion")
-    //@JsonBackReference
+    @JsonBackReference
     //JsonIgnore
     private List<Asiento> asiento;
 

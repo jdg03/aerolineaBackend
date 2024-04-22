@@ -13,6 +13,8 @@ public interface VueloService {
 
     public Optional<Vuelo> buscarPorId(int id);
 
+    public String eliminar(int id);
+
 
 
 }
