@@ -1,5 +1,7 @@
 package com.aerolinea.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +26,7 @@ public class DetalleVenta {
     private int cantidadBoletos;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "id_venta", referencedColumnName = "id_venta")
     private Venta venta;
 

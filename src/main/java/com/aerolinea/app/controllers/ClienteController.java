@@ -58,4 +58,10 @@ public class ClienteController {
         return this.clienteServiceImpl.obtenerVentas(idCliente);
     }
 
+    @GetMapping("/obtenerPorCorreo/{correo}")
+    public Cliente obtenerPorCorreo(@PathVariable String correo) {
+
+        return this.clienteServiceImpl.buscarPorCorreo(correo);
+    }
+
 }

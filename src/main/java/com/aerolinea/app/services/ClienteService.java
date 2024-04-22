@@ -15,6 +15,8 @@ public interface ClienteService {
 
     public Cliente actualizarCliente(int id, Cliente cliente);
 
+    public Cliente buscarPorCorreo(String correo);
+
     public String eliminarPorId(int id);
 
     public List<Venta> obtenerVentas(int idCliente);

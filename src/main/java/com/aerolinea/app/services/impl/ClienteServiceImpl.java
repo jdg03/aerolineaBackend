@@ -76,4 +76,13 @@ public class ClienteServiceImpl implements ClienteService{
         }
        
     }
+
+    @Override
+    public Cliente buscarPorCorreo(String correo) {
+        Cliente cliente = clienteRepository.findByCorreo(correo);
+        if (cliente == null) {
+            return null;
+        }
+        return cliente;
+    }
     }
