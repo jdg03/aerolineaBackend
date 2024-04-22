@@ -41,8 +41,8 @@ public class CiudadController {
         return this.ciudadServiceImpl.actualizarCiudad(id, ciudad);
     }
 
-    @GetMapping("/buscar")
-    public Optional<Ciudad> buscarPorId(@RequestParam int id) {
+    @GetMapping("/buscar/{id}")
+    public Optional<Ciudad> buscarPorId(@PathVariable int id) {
         return this.ciudadServiceImpl.buscarPorId(id);
     }
 
