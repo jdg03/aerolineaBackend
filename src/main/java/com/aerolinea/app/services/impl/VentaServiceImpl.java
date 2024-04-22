@@ -24,7 +24,7 @@ public class VentaServiceImpl implements VentaService {
 
 
     @Override
-    // Al hacer la prueba no me lei los datos del Json, por eso le envie la informacion como parametro
+    // Al hacer la prueba no me leia los datos del Json, por eso le envie la informacion como parametro
     public Venta crearVenta(int idCliente, int precio, VentaDTO ventaDTO) {
 
     // Obtener el cliente
@@ -44,8 +44,9 @@ public class VentaServiceImpl implements VentaService {
            
             
         }
+        total=total-descuento;
         double impuesto = total * 0.15;
-        double subtotal = total+impuesto-descuento;
+        double subtotal = total+impuesto;
         LocalDate fecha =LocalDate.now();
 
         // Crear la venta
