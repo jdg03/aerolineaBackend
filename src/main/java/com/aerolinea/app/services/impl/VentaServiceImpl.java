@@ -24,7 +24,8 @@ public class VentaServiceImpl implements VentaService {
 
 
     @Override
-    public Venta crearVenta(int idCliente, VentaDTO ventaDTO) {
+    // Al hacer la prueba no me lei los datos del Json, por eso le envie la informacion como parametro
+    public Venta crearVenta(int idCliente, int precio, VentaDTO ventaDTO) {
 
     // Obtener el cliente
     Cliente cliente = this.clienteRepository.findById(idCliente).get(); 
@@ -33,7 +34,7 @@ public class VentaServiceImpl implements VentaService {
     if(cliente != null){
 
         // Calcular descuento, impuesto y subtotal
-        double total = 500;
+        double total = (double) precio;
         double descuento = 0;
         
         //aplica descuento si el cliente esta registrado

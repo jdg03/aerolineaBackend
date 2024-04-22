@@ -8,11 +8,11 @@ import com.aerolinea.app.entities.dto.BoletoDTO;
 
 public interface BoletoService {
     
-    public Boleto crearBoleto(BoletoDTO boletoDTO);
+    public BoletoDTO crearBoleto(BoletoDTO boletoDTO);
 
-    public List<Boleto> obtenerBoletos();
+    public List<BoletoDTO> obtenerBoletos();
 
-    public Optional<Boleto> buscarPorId(int id);
+    public Optional<BoletoDTO> buscarPorId(int id);
 
     public Boleto actualizarBoleto(int id, Boleto boleto);
 

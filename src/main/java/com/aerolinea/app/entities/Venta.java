@@ -21,10 +21,15 @@ public class Venta {
     @Column(name = "id_venta")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVenta;
+
     private LocalDate fecha;
+
     private double total;
+
     private double descuento;
+
     private double impuesto;
+    
     @Column(name = "sub_total")
     private double subtotal;
 

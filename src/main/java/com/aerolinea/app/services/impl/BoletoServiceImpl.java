@@ -1,5 +1,6 @@
 package com.aerolinea.app.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,7 @@ public class BoletoServiceImpl implements BoletoService{
     AsientoRepository asientoRepository;
     
     @Override
-    public Boleto crearBoleto(BoletoDTO boletoDTO) {
+    public BoletoDTO crearBoleto(BoletoDTO boletoDTO) {
 
         Vuelo vuelo = this.vueloRepository.findById(boletoDTO.getIdVuelo()).get();
         Asiento asiento = this.asientoRepository.findById(boletoDTO.getIdAsiento()).get();
@@ -36,13 +37,20 @@ public class BoletoServiceImpl implements BoletoService{
         if(vuelo != null && asiento !=null ){
 
             Boleto boleto = new Boleto();
-            boleto.setPrecioTotal(boletoDTO.getPrecionTotal());
+            boleto.setPrecioTotal(asiento.getClase().getPrecio());
             boleto.setVuelo(vuelo);
             boleto.setAsiento(asiento);
 
             boleto = this.boletoRepository.save(boleto);
 
-            return boleto;
+            //retorna un DTO
+            BoletoDTO boletoResponse = new BoletoDTO();
+            boletoResponse.setIdVuelo(boleto.getVuelo().getIdVuelo());
+            boletoResponse.setIdAsiento(boleto.getAsiento().getIdAsiento());
+            //debe ser otro precio
+           boletoResponse.setPrecioTotal(boleto.getPrecioTotal());
+
+        return boletoResponse;
 
         } else {
             throw new RuntimeException("No se pudo crear el boleto");
@@ -50,13 +58,37 @@ public class BoletoServiceImpl implements BoletoService{
     }
 
     @Override
-    public List<Boleto> obtenerBoletos() {
-        return (List<Boleto>) this.boletoRepository.findAll();
+    public List<BoletoDTO> obtenerBoletos() {
+        List<Boleto> boletos = (List<Boleto>) this.boletoRepository.findAll();
+        List<BoletoDTO> boletosDTO = new ArrayList<>();
+
+        for (Boleto boleto : boletos) {
+            BoletoDTO boletoDTO = new BoletoDTO();
+            boletoDTO.setIdVuelo(boleto.getVuelo().getIdVuelo());
+            boletoDTO.setIdAsiento(boleto.getAsiento().getIdAsiento());
+            boletoDTO.setPrecioTotal(boleto.getPrecioTotal());
+
+            boletosDTO.add(boletoDTO);
+        }
+
+        return boletosDTO;
     }
 
     @Override
-    public Optional<Boleto> buscarPorId(int id) {
-        return this.boletoRepository.findById(id);
+    public Optional<BoletoDTO> buscarPorId(int id) {
+        Boleto boleto = this.boletoRepository.findById(id).get();
+        if (boleto!=null) {
+       
+        BoletoDTO boletoDTO = new BoletoDTO();
+        boletoDTO.setIdVuelo(boleto.getVuelo().getIdVuelo());
+        boletoDTO.setIdAsiento(boleto.getAsiento().getIdAsiento());
+        boletoDTO.setPrecioTotal(boleto.getPrecioTotal());
+        
+        return Optional.of(boletoDTO);
+
+     } else {
+        return Optional.empty();
+     }
     }
 
     @Override

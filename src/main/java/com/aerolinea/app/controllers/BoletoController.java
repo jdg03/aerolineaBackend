@@ -27,17 +27,17 @@ public class BoletoController {
     BoletoServiceImpl boletoServiceImpl;
 
     @PostMapping("/crear")
-    public Boleto crearBoleto(@RequestBody BoletoDTO boletoDTO){
+    public BoletoDTO crearBoleto(@RequestBody BoletoDTO boletoDTO){
         return this.boletoServiceImpl.crearBoleto(boletoDTO);
     }
 
     @GetMapping("/obtener")
-    public List<Boleto> obtenerBoletos(){
+    public List<BoletoDTO> obtenerBoletos(){
         return this.boletoServiceImpl.obtenerBoletos();
     }
 
-    @GetMapping("/buscar")
-    public Optional<Boleto> buscarPorId(@RequestParam int id){
+    @GetMapping("/buscar/{id}")
+    public Optional<BoletoDTO> buscarPorId(@PathVariable int id){
         return this.boletoServiceImpl.buscarPorId(id);
     }
 

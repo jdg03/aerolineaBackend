@@ -27,9 +27,10 @@ public class VentaController {
     VentaServiceImpl ventaServiceImpl;
    
 
-    @PostMapping("/crear/{idCliente}")
-    public Venta crearVenta(@PathVariable int idCliente, @RequestBody VentaDTO ventaDTO){
-        return this.ventaServiceImpl.crearVenta(idCliente,ventaDTO);
+    // el ventaDTO no lo lee del Json por eso los parametros en la url
+    @PostMapping("/crear/{idCliente}/{precio}")
+    public Venta crearVenta(@PathVariable int idCliente, @PathVariable int precio, @RequestBody VentaDTO ventaDTO){
+        return this.ventaServiceImpl.crearVenta(idCliente,precio,ventaDTO);
     }
 
     @GetMapping("/obtener")
