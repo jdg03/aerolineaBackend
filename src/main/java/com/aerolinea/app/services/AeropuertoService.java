@@ -7,7 +7,7 @@ import com.aerolinea.app.entities.Aeropuerto;
 
 public interface AeropuertoService {
 
-    public Aeropuerto crearAeropuerto(Aeropuerto aeropuerto);
+    public Aeropuerto crearAeropuerto(int idCiudad, String nombre);
 
     public List<Aeropuerto> listaAeropuertos();
 

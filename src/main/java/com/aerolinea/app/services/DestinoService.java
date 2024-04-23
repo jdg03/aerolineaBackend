@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.aerolinea.app.entities.Destino;
-import com.aerolinea.app.entities.dto.DestinoDTO;
+
 
 public interface DestinoService {
     

@@ -2,7 +2,7 @@ package com.aerolinea.app.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,7 +34,7 @@ public class Asiento {
     @ManyToOne
     @JoinColumn(name = "id_avion", referencedColumnName = "id_avion")
     //@JsonManagedReference
-    //@JsonBackReference //-
+    @JsonBackReference //-
     @JsonIgnore
     private Avion avion;
 

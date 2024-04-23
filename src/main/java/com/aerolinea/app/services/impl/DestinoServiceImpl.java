@@ -24,7 +24,7 @@ public class DestinoServiceImpl implements DestinoService{
 
     @Override
 public Destino crearDestino(int distancia, int ciudadO, int ciudadD) {
-    // No necesitas verificar si las ciudades son null porque si no se encuentran en la base de datos, findById() devolverá un Optional vacío
+
     Ciudad ciudadOrigen = this.ciudadRepository.findById(ciudadO).orElseThrow(() -> new RuntimeException("No se encontró la ciudad de origen con ID: " + ciudadO));
     Ciudad ciudadDestino = this.ciudadRepository.findById(ciudadD).orElseThrow(() -> new RuntimeException("No se encontró la ciudad de destino con ID: " + ciudadD));
 

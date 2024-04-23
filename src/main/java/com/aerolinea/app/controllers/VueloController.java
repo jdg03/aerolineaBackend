@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aerolinea.app.entities.Vuelo;
+import com.aerolinea.app.entities.dto.VueloDTO;
 import com.aerolinea.app.services.impl.VueloServiceImpl;
 
 @RestController
@@ -23,14 +24,14 @@ public class VueloController {
     @Autowired
     private VueloServiceImpl vueloServiceImpl;
 
-    @GetMapping("")
+    @GetMapping("/obtener")
     public List<Vuelo> vuelos() {
         return this.vueloServiceImpl.listarVuelos();
     }
 
     @PostMapping("/crear")
-    public Vuelo crearVuelo(@RequestBody Vuelo vuelo) {
-        return this.vueloServiceImpl.crearVuelo(vuelo);
+    public Vuelo crearVuelo(@RequestBody VueloDTO vueloDto) {
+        return this.vueloServiceImpl.crearVuelo(vueloDto);
     }
 
     @GetMapping("/buscar/{id}")

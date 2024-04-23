@@ -10,9 +10,12 @@ import org.springframework.stereotype.Service;
 
 import com.aerolinea.app.entities.Aeropuerto;
 import com.aerolinea.app.entities.Avion;
+import com.aerolinea.app.entities.Destino;
 import com.aerolinea.app.entities.Vuelo;
+import com.aerolinea.app.entities.dto.VueloDTO;
 import com.aerolinea.app.repositories.AeropuertoRepository;
 import com.aerolinea.app.repositories.AvionRepository;
+import com.aerolinea.app.repositories.DestinoRepository;
 import com.aerolinea.app.repositories.VueloRepository;
 import com.aerolinea.app.services.VueloService;
 
@@ -29,10 +32,8 @@ public class VueloServiceImpl implements VueloService {
     private AeropuertoRepository aeropuertoRepository;
 
     @Autowired
-    private AvionServiceImpl avionServiceImpl;
-
-    @Autowired
-    private AeropuertoServiceImpl aeropuertoServiceImpl;
+    private DestinoRepository destinoRepository;
+   
 
     @Override
     public List<Vuelo> listarVuelos() {
@@ -40,8 +41,27 @@ public class VueloServiceImpl implements VueloService {
     }
 
     @Override
-    public Vuelo crearVuelo(Vuelo vuelo) {
+    public Vuelo crearVuelo(VueloDTO vueloDto) {
+
+       Avion avion = this.avionRepository.findById(vueloDto.getIdAvion()).orElse(null);
+       Destino destino = this.destinoRepository.findById(vueloDto.getIdDestino()).orElse(null);
+
+       if (avion != null && destino != null) {
+        Vuelo vuelo = new Vuelo();
+        vuelo.setAvion(avion);
+        vuelo.setDestino(destino);
+        vuelo.setEstado(vueloDto.getEstado());
+        vuelo.setFechaSalida(vueloDto.getFechaSalida());
+        vuelo.setFechaLlegada(vueloDto.getFechaLlegada());
+
+
+        vuelo = this.vueloRepository.save(vuelo);
+
         return this.vueloRepository.save(vuelo);
+    } else {
+        throw new RuntimeException("No se pudo crear el asiento");
+    }
+        
     }
 
     public Avion buscarAvion(int id) {
