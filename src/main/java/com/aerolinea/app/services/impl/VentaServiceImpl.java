@@ -44,10 +44,11 @@ public class VentaServiceImpl implements VentaService {
            
             
         }
-        total=total-descuento;
-        double impuesto = total * 0.15;
-        double subtotal = total+impuesto;
-        LocalDate fecha =LocalDate.now();
+        LocalDate fecha = LocalDate.now();
+
+        double subtotal = total - descuento;
+        double impuesto = subtotal * 0.15;
+        total = subtotal + impuesto;
 
         // Crear la venta
         Venta venta = new Venta();
