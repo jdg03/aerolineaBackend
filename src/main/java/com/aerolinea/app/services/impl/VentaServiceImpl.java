@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.aerolinea.app.entities.Cliente;
 import com.aerolinea.app.entities.Venta;
+import com.aerolinea.app.entities.Vuelo;
 import com.aerolinea.app.entities.dto.VentaDTO;
 import com.aerolinea.app.repositories.ClienteRepository;
 import com.aerolinea.app.repositories.VentaRepository;
+import com.aerolinea.app.repositories.VueloRepository;
 import com.aerolinea.app.services.VentaService;
 @Service
 public class VentaServiceImpl implements VentaService {
@@ -22,19 +24,29 @@ public class VentaServiceImpl implements VentaService {
     @Autowired
     ClienteRepository clienteRepository;
 
+    @Autowired
+    VueloRepository vueloRepository;
+
 
     @Override
     // Al hacer la prueba no me leia los datos del Json, por eso le envie la informacion como parametro
-    public Venta crearVenta(int idCliente, int precio, VentaDTO ventaDTO) {
+    public Venta crearVenta(int idCliente, int precioClase, int idVuelo ) {
 
     // Obtener el cliente
     Cliente cliente = this.clienteRepository.findById(idCliente).get(); 
+
+    //obtener el vuelo
+    Vuelo vuelo = this.vueloRepository.findById(idVuelo).get();
+
+
+    //precio segun la distancia
+    double precioFinal = precioClase + (vuelo.getDestino().getDistancia()*0.07);
 
     // Verificar si el cliente existe
     if(cliente != null){
 
         // Calcular descuento, impuesto y subtotal
-        double total = (double) precio;
+        double total = precioFinal;
         double descuento = 0;
         
         //aplica descuento si el cliente esta registrado

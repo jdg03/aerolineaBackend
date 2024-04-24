@@ -8,7 +8,7 @@ import com.aerolinea.app.entities.dto.VentaDTO;
 
 public interface VentaService {
 
-    public Venta crearVenta(int idCliente, int precio, VentaDTO venta);
+    public Venta crearVenta(int idCliente, int precio, int idVuelo);
 
     public List<Venta> obtenerVentas();
 
